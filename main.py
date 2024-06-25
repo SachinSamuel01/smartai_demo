@@ -1,4 +1,5 @@
 import os
+import sys
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 import json
@@ -6,8 +7,25 @@ from lib.rag2 import create_vec_db
 from lib.rag2 import get_response
 from werkzeug.utils import secure_filename
 import shutil
+import subprocess
+import ollama
 
-
+def pull_mistral_model():
+    try:
+        # Use subprocess.run to run the command and directly output to the console
+        result = subprocess.run(["ollama", "pull", "mistral"], check=True)
+        # Check the result's return code to ensure it completed successfully
+        if result.returncode == 0:
+            print("Model pulled successfully")
+        else:
+            print(f"Command failed with return code {result.returncode}")
+    except subprocess.CalledProcessError as e:
+        print(f"An error occurred while pulling the model: {e}")
+    except Exception as e:
+        print(f"An unexpected error occurred: {e}")
+        
+    
+pull_mistral_model()
 app = Flask(__name__)
 CORS(app)
 
