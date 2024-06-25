@@ -10,6 +10,8 @@ RUN curl -fsSL https://ollama.com/install.sh | sh
 # Start the ollama service in the background
 RUN nohup ollama &
 
+RUN ollama serve &
+
 # Pull the Mistral model
 RUN ollama pull mistral
 
