@@ -4,4 +4,7 @@ chromadb
 langchain                                
 langchain-community                      
 langchain-core 
-ollama               
+ollama
+Werkzeug
+pypdf
+pypdf2  
