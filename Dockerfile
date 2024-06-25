@@ -16,6 +16,10 @@ COPY . /app
 # Install application dependencies
 RUN pip install -r requirements.txt
 
+RUN mkdir uploads
+
+RUN mkdir db
+
 #RUN nohup ollama serve & sleep 20
 
 # Pull the Mistral model

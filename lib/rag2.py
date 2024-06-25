@@ -31,7 +31,7 @@ def create_vec_db(prompt, files):
 
     print(3)
     
-    persist_directory = r'./db/chroma1'
+    persist_directory = r'db/chroma1'
     if not os.path.exists(persist_directory):
         os.makedirs(persist_directory)
 
