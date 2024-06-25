@@ -8,7 +8,7 @@ RUN apt-get update && apt-get install -y curl
 RUN curl -fsSL https://ollama.com/install.sh | sh
 
 # Start the ollama service in the background
-RUN nohup ollama serve & sleep 5
+RUN nohup ollama &
 
 # Pull the Mistral model
 RUN ollama pull mistral
