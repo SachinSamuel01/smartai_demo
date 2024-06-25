@@ -20,7 +20,6 @@ def create_vec_db(prompt, files):
 
     print(1, flush=True)
     p=prompt
-    print(llm)
     print(2, flush=True)
 
     all_doc=[]
@@ -37,8 +36,8 @@ def create_vec_db(prompt, files):
         os.makedirs(persist_directory)
 
     print("DB created", flush=True)
-    print(llm)
-    print(embeddings)
+    print(llm, flush=True)
+    print(embeddings, flush=True)
     # Assuming 'all_splits' is your texts and 'embeddings' is your embedding function/model
     vector_store = Chroma.from_documents(all_doc, embedding=embeddings)
     print(vector_store, flush=True)
