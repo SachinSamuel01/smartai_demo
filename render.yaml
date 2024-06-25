@@ -1,5 +1,11 @@
 services:
   - type: web
     name: my-ollama-service
-    env: docker
-    dockerfilePath: ./Dockerfile
+    env: python
+    buildCommand: |
+      curl -fsSL https://ollama.com/install.sh | sh
+      ollama pull mistral
+    startCommand: python main.py
+    envVars:
+      - key: PORT
+        value: 3001
