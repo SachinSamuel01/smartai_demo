@@ -58,13 +58,13 @@ def create_bot():
                 file.seek(0)
                 file.save(os.path.join(f'uploads/', filename))
                 documents.append(filename)
-        print(documents)
+        print("Doc check " + documents,flush=True)
         
         files=[os.path.join('uploads',x) for x in os.listdir('uploads')]
         print(files, flush=True)
         global_vector_db, global_prompt = create_vec_db(user_prompt, files)
         
-        print(global_vector_db, global_prompt)
+        print(global_vector_db, global_prompt, flush=True)
         
         return jsonify({'Created': True}), 200
     except Exception as e:

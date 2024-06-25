@@ -18,10 +18,10 @@ parser= StrOutputParser()
 
 def create_vec_db(prompt, files):
 
-    print(1)
+    print(1, flush=True)
     p=prompt
 
-    print(2)
+    print(2, flush=True)
 
     all_doc=[]
     for file in files:
@@ -29,7 +29,7 @@ def create_vec_db(prompt, files):
         doc = loader.load_and_split()
         all_doc.extend(doc)
 
-    print(3)
+    print(3, flush=True)
     
     persist_directory = r'db/chroma1'
     if not os.path.exists(persist_directory):
@@ -37,7 +37,7 @@ def create_vec_db(prompt, files):
 
     # Assuming 'all_splits' is your texts and 'embeddings' is your embedding function/model
     vector_store = Chroma.from_documents(all_doc, embedding=embeddings)
-
+    print(vector_store, flush=True)
     # Initialize the retriever with the vector store
     retriever = vector_store.as_retriever()
     return retriever, p
