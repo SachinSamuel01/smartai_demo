@@ -22,6 +22,11 @@ COPY . /app
 # Install application dependencies
 RUN pip install -r requirements.txt
 
+RUN nohup ollama serve & sleep 20
+
+# Pull the Mistral model
+RUN ollama pull mistral
+
 # Expose the port that your application runs on
 EXPOSE 3001
 
