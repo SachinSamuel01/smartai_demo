@@ -20,7 +20,7 @@ def create_vec_db(prompt, files):
 
     print(1, flush=True)
     p=prompt
-
+    print(llm)
     print(2, flush=True)
 
     all_doc=[]
