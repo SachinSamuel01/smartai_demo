@@ -36,17 +36,18 @@ def delete_all_content(folder_path):
 
 @app.route("/create", methods=['POST'])
 def create_bot():
+    print("Called")
     try:
         delete_all_content('./uploads')
         delete_all_content('./db')
         global global_vector_db, user_prompt, global_prompt
         prompt = request.form['prompt']
         user_prompt = request.form['prompt']
-        print(user_prompt)
+        print(user_prompt, flush=True)
         files = request.files.getlist('documents')  # Get the files list
         documents = []
         for file in files:
-            print(file)
+            print(file, flush=True)
             if file and allowed_file(file.filename):
                 #print(file.filename, file.read())
                 filename = secure_filename(file.filename)
@@ -60,7 +61,7 @@ def create_bot():
         print(documents)
         
         files=[os.path.join('uploads',x) for x in os.listdir('uploads')]
-        print(files)
+        print(files, flush=True)
         global_vector_db, global_prompt = create_vec_db(user_prompt, files)
         
         print(global_vector_db, global_prompt)
