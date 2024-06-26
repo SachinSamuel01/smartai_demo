@@ -38,8 +38,10 @@ def delete_all_content(folder_path):
 def create_bot():
     print("Called")
     try:
-        delete_all_content('./uploads')
-        delete_all_content('./db')
+        if os.path.exists(f'uploads/'):
+            delete_all_content('./uploads')
+        if os.path.exists(f'db/'):
+            delete_all_content('./db')
         global global_vector_db, user_prompt, global_prompt
         prompt = request.form['prompt']
         user_prompt = request.form['prompt']
